@@ -3,125 +3,311 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guangze Liu | Research Portfolio</title>
-  <meta name="description" content="Guangze Liu — AI, spatial semantic understanding, multimodal learning, and human-centered systems." />
+  <title>Liu Guangze | PhD Student</title>
+  <meta name="description" content="Liu Guangze — First-year PhD student in Computer Science, working toward research in spatial semantic understanding, generative latent priors, and graph neural networks." />
   <style>
     :root {
       --bg: #0b1020;
-      --panel: #121931;
+      --panel: rgba(18, 25, 49, 0.78);
       --text: #edf2ff;
       --muted: #b9c4e3;
       --line: rgba(255,255,255,0.1);
       --accent: #8fb4ff;
-      --accent-2: #8ef0d2;
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
-      --max: 1120px;
+      --accent-2: #73e7c8;
+      --shadow: 0 18px 50px rgba(0,0,0,.28);
+      --max: 980px;
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(143,180,255,.16), transparent 30%),
-        radial-gradient(circle at top right, rgba(142,240,210,.10), transparent 24%),
-        linear-gradient(180deg, #0a0f1d, #0d1224 40%, #0b1020 100%);
+        radial-gradient(circle at top left, rgba(143,180,255,.18), transparent 26%),
+        radial-gradient(circle at 85% 10%, rgba(115,231,200,.12), transparent 22%),
+        linear-gradient(180deg, #09101c 0%, #0b1120 42%, #0b1020 100%);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.35), transparent 80%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
     a { color: inherit; text-decoration: none; }
     .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
     .nav {
-      position: sticky; top: 0; z-index: 50;
+      position: sticky;
+      top: 0;
+      z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(11, 16, 32, 0.72);
+      background: rgba(10, 15, 28, 0.74);
       border-bottom: 1px solid var(--line);
     }
+
     .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 0; gap: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
     }
-    .brand { font-weight: 700; letter-spacing: .2px; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 14px; }
-    .hero { padding: 72px 0 40px; }
-    .hero-grid { display: grid; grid-template-columns: 1.35fr .9fr; gap: 28px; align-items: stretch; }
-    .hero-card, .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hero { padding: 74px 0 34px; }
+
+    .hero-card, .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 26px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
     }
-    .hero-card { padding: 34px; }
+
+    .hero-card {
+      padding: 38px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -60px;
+      top: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(143,180,255,.18), transparent 65%);
+      pointer-events: none;
+    }
+
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 12px; border: 1px solid rgba(143,180,255,.3);
-      color: var(--accent); background: rgba(143,180,255,.08);
-      border-radius: 999px; font-size: 13px; font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(143,180,255,.3);
+      color: var(--accent);
+      background: rgba(143,180,255,.08);
+      font-size: 13px;
+      font-weight: 700;
     }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 14px rgba(115,231,200,.8);
+    }
+
     h1 {
-      margin: 18px 0 16px; font-size: clamp(34px, 6vw, 58px);
-      line-height: 1.05; letter-spacing: -1.2px;
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 7vw, 62px);
+      line-height: 1.03;
+      letter-spacing: -1.4px;
     }
-    .lead { font-size: 18px; color: var(--muted); max-width: 760px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.07);
+      color: #dbe5ff;
+      font-size: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 12px 18px; border-radius: 14px; border: 1px solid var(--line);
-      font-weight: 600; transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
+
     .btn:hover { transform: translateY(-1px); }
+
     .btn-primary {
-      background: linear-gradient(135deg, rgba(143,180,255,.24), rgba(142,240,210,.16));
+      background: linear-gradient(135deg, rgba(143,180,255,.24), rgba(115,231,200,.12));
       border-color: rgba(143,180,255,.35);
     }
-    .btn-secondary { background: rgba(255,255,255,.02); color: var(--muted); }
-    .hero-side { padding: 26px; display: grid; gap: 16px; }
-    .metric {
-      padding: 16px; border-radius: 18px;
-      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+      max-width: 720px;
     }
-    .metric .k { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
-    .metric .v { font-size: 18px; font-weight: 700; }
-    .section { padding: 20px 0 24px; }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
-    .section h2 { margin: 0; font-size: clamp(24px, 3.6vw, 34px); letter-spacing: -.4px; }
-    .section-sub { color: var(--muted); max-width: 760px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .chip {
-      padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.07); color: #dbe5ff; font-size: 14px;
+
+    .stat {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.06);
     }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+    .stat-k {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .stat-v { font-weight: 800; }
+
+    .section { padding: 16px 0 24px; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -.3px;
+    }
+
+    .section-sub { color: var(--muted); }
+
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
     .card {
-      padding: 22px; border-radius: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      border: 1px solid var(--line); box-shadow: var(--shadow); height: 100%;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
     }
-    .card h3 { margin: 0 0 10px; font-size: 20px; }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(143,180,255,.04), transparent 40%);
+      pointer-events: none;
+    }
+
     .meta {
-      color: var(--accent); font-size: 13px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
     }
-    .card p, .card li { color: var(--muted); }
-    .card ul { padding-left: 18px; margin: 10px 0 0; }
-    .card-footer { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
-    .tag {
-      font-size: 12px; padding: 8px 10px; border-radius: 999px;
-      background: rgba(143,180,255,.08); border: 1px solid rgba(143,180,255,.18); color: #d6e3ff;
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      position: relative;
     }
-    .timeline { display: grid; gap: 16px; }
-    .timeline-item {
-      display: grid; grid-template-columns: 140px 1fr; gap: 18px;
-      padding: 18px 0; border-bottom: 1px solid var(--line);
+
+    .card p, .muted {
+      color: var(--muted);
+      position: relative;
     }
-    .timeline-item:last-child { border-bottom: 0; }
-    .time { color: var(--accent); font-weight: 700; }
-    .where { color: var(--muted); margin-top: 4px; }
-    .footer { padding: 42px 0 64px; color: var(--muted); text-align: center; }
-    @media (max-width: 980px) {
-      .hero-grid, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+
+    .icon-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .repo-link {
+      transition: transform .18s ease, border-color .18s ease;
+    }
+
+    .repo-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(143,180,255,.24);
+    }
+
+    .contact-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(143,180,255,.08), rgba(115,231,200,.05));
+    }
+
+    .footer {
+      padding: 36px 0 58px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 930px) {
+      .grid-2, .grid-3, .hero-stats { grid-template-columns: 1fr; }
+      .contact-strip { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -131,244 +317,143 @@
       <div class="brand">Guangze Liu</div>
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#projects">Projects</a>
-        <a href="#coursework">Coursework</a>
+        <a href="#experience">Previous Work</a>
+        <a href="#repos">Repos</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
   <header class="hero container">
-    <div class="hero-grid">
-      <section class="hero-card">
-        <div class="eyebrow">AI · Spatial Semantics · Human-Centered Systems</div>
-        <h1>Research-oriented builder working on spatial semantic understanding and AI systems.</h1>
-        <p class="lead">
-          I am Guangze Liu, a PhD-oriented computer science researcher focused on spatial semantic understanding,
-          multimodal representation learning, spatiotemporal reasoning, and human-centered systems.
-        </p>
-        <div class="chips">
-          <div class="chip">Spatial Semantic Understanding</div>
-          <div class="chip">Multimodal Learning</div>
-          <div class="chip">Spatiotemporal Modeling</div>
-          <div class="chip">Human-Centered AI</div>
-          <div class="chip">Research Prototyping</div>
-        </div>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://github.com/GuangzeLiu" target="_blank" rel="noreferrer">View GitHub</a>
-          <a class="btn btn-secondary" href="#projects">Selected Projects</a>
-          <a class="btn btn-secondary" href="#contact">Contact</a>
-        </div>
-      </section>
+    <section class="hero-card">
+      <div class="eyebrow">PhD Student · Computer Science</div>
+      <h1>Guangze Liu</h1>
+      <p class="lead">
+        I am currently a first-year PhD student in Computer Science. My planned research direction is spatial semantic understanding via generative latent priors and graph neural networks, with a focus on structured reasoning over spatiotemporal data.
+      </p>
 
-      <aside class="hero-side hero-card">
-        <div class="metric">
-          <div class="k">Current focus</div>
-          <div class="v">Research portfolio, spatial semantics, and system-building</div>
+      <div class="chips">
+        <div class="chip">Spatial Semantics</div>
+        <div class="chip">Generative Latent Priors</div>
+        <div class="chip">Graph Neural Networks</div>
+        <div class="chip">Spatiotemporal Reasoning</div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/GuangzeLiu" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-k">Status</div>
+          <div class="stat-v">Year 1</div>
         </div>
-        <div class="metric">
-          <div class="k">Methods</div>
-          <div class="v">PyTorch · Vision-language modeling · Dynamic graph reasoning</div>
+        <div class="stat">
+          <div class="stat-k">Focus</div>
+          <div class="stat-v">Study + Research</div>
         </div>
-        <div class="metric">
-          <div class="k">Build stack</div>
-          <div class="v">Python · React / Vite · Jupyter · LaTeX · GitHub</div>
+        <div class="stat">
+          <div class="stat-k">Mode</div>
+          <div class="stat-v">Build + Study</div>
         </div>
-        <div class="metric">
-          <div class="k">Portfolio goal</div>
-          <div class="v">Show a coherent research trajectory instead of a scattered repo list</div>
-        </div>
-      </aside>
-    </div>
+      </div>
+    </section>
   </header>
 
   <main class="container">
     <section class="section" id="about">
       <div class="section-head">
-        <div>
-          <h2>About</h2>
-          <div class="section-sub">A concise overview for faculty, collaborators, and technical reviewers.</div>
-        </div>
+        <h2>About</h2>
       </div>
       <div class="grid-2">
         <div class="card">
-          <div class="meta">Research direction</div>
-          <h3>What I work on</h3>
-          <p>
-            My research interests center on how large models encode and reason over spatial structure. I am especially interested in
-            representation-centric approaches that connect generative latent structure, multimodal perception, and structured reasoning.
-          </p>
-          <ul>
-            <li>Spatial semantic understanding in large models</li>
-            <li>Multimodal representation learning for map-based and structured data</li>
-            <li>Spatiotemporal reasoning with graph-based or dynamic relational models</li>
-            <li>Human-centered AI systems with real-world usability constraints</li>
-          </ul>
+          <div class="icon-row">🎓</div>
+          <div class="meta">Current status</div>
+          <h3>PhD student</h3>
+          <p>I am currently in the first year of my PhD. This page presents my current academic direction and a concise view of my technical background.</p>
         </div>
         <div class="card">
-          <div class="meta">What I build</div>
-          <h3>How I approach projects</h3>
-          <p>
-            I work from problem framing to implementation: defining a concrete task, building a reproducible pipeline,
-            evaluating limitations carefully, and packaging results into a clean repository or interactive prototype.
-          </p>
-          <ul>
-            <li>Research codebases with explicit datasets, methods, and outputs</li>
-            <li>Interactive prototypes with accessible UI and clear information flow</li>
-            <li>Project documentation designed for future reuse and review</li>
-          </ul>
+          <div class="icon-row">🧭</div>
+          <div class="meta">Note</div>
+          <h3>Research vs. previous work</h3>
+          <p>The research topic shown here reflects the work I plan to pursue during my PhD. My repositories and past projects represent work I completed previously.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="research">
+    <section class="section" id="experience">
       <div class="section-head">
         <div>
-          <h2>Research Themes</h2>
-          <div class="section-sub">The page should immediately signal a coherent research identity.</div>
+          <h2>Previous Work</h2>
+          <div class="section-sub">Selected projects completed before or alongside the start of my PhD.</div>
         </div>
       </div>
       <div class="grid-3">
         <article class="card">
-          <div class="meta">Theme 01</div>
-          <h3>Spatial semantic understanding</h3>
-          <p>Investigating how generative and multimodal models capture spatial structure, implicit layout regularities, and semantically meaningful geometric relations.</p>
-          <div class="card-footer">
-            <span class="tag">Representation learning</span>
-            <span class="tag">Spatial structure</span>
-          </div>
-        </article>
-        <article class="card">
-          <div class="meta">Theme 02</div>
-          <h3>Spatiotemporal reasoning</h3>
-          <p>Studying prediction and structured inference over urban or dynamic environments, including map-based reasoning, trajectory-aware patterns, and graph-driven forecasting.</p>
-          <div class="card-footer">
-            <span class="tag">Dynamic graphs</span>
-            <span class="tag">Urban data</span>
-          </div>
-        </article>
-        <article class="card">
-          <div class="meta">Theme 03</div>
-          <h3>Human-centered AI systems</h3>
-          <p>Designing AI-assisted systems that improve information access, reduce friction, and support users through clearer interaction and safer decision support.</p>
-          <div class="card-footer">
-            <span class="tag">Accessibility</span>
-            <span class="tag">HCI</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="section-head">
-        <div>
-          <h2>Selected Projects</h2>
-          <div class="section-sub">Show only projects that strengthen your research narrative or demonstrate strong implementation.</div>
-        </div>
-      </div>
-      <div class="grid-2">
-        <article class="card">
-          <div class="meta">Research-oriented project</div>
+          <div class="icon-row">📊</div>
+          <div class="meta">Project</div>
           <h3>Research LA Crime Prediction</h3>
-          <p>Research-facing work on urban spatial pattern analysis, representation learning, and prediction using map-based data.</p>
-          <div class="card-footer">
-            <span class="tag">Python</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">Spatial analytics</span>
-          </div>
+          <p>Urban spatial pattern modeling in ML and prediction with engineered features from 2M+ LAPD records.</p>
         </article>
         <article class="card">
-          <div class="meta">System project</div>
+          <div class="icon-row">🎮</div>
+          <div class="meta">Project</div>
           <h3>Project GravityLeap</h3>
-          <p>A project demonstrating end-to-end system thinking, iterative prototyping, and versioned development, kept as the canonical final version.</p>
-          <div class="card-footer">
-            <span class="tag">Prototype</span>
-            <span class="tag">System design</span>
-          </div>
+          <p>A 2D platformer game with scene and camera rotation in Unity.</p>
         </article>
         <article class="card">
-          <div class="meta">Standalone build</div>
-          <h3>Project Chroma Escape</h3>
-          <p>A self-contained project that helps show implementation breadth beyond research code, useful as a supporting portfolio item.</p>
-          <div class="card-footer">
-            <span class="tag">Independent project</span>
-            <span class="tag">Implementation</span>
-          </div>
-        </article>
-        <article class="card">
-          <div class="meta">Coursework support</div>
-          <h3>Selected course repositories</h3>
-          <p>Cleanly named course projects kept as technical evidence, but secondary to research-facing work on the homepage.</p>
-          <div class="card-footer">
-            <span class="tag">Data systems</span>
-            <span class="tag">ML / NLP</span>
-            <span class="tag">Foundations</span>
-          </div>
+          <div class="icon-row">🗂️</div>
+          <div class="meta">Course / Project</div>
+          <h3>Selected coursework repositories</h3>
+          <p>Cleaned course repositories kept as technical background and implementation evidence.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="coursework">
+    <section class="section" id="repos">
       <div class="section-head">
         <div>
-          <h2>Selected Coursework</h2>
-          <div class="section-sub">Keep coursework tidy and visible as technical evidence, but secondary to research-facing work.</div>
+          <h2>Selected Repositories</h2>
         </div>
       </div>
-      <div class="grid-2">
-        <article class="card">
-          <div class="meta">Course project</div>
-          <h3>Course ChatDB DSCI551</h3>
-          <p>A structured course project demonstrating systems thinking, engineering discipline, and implementation completeness.</p>
-        </article>
-        <article class="card">
-          <div class="meta">Course project</div>
-          <h3>Course Foundations of Data Management</h3>
-          <p>A clearly named course repository with concise scope and implementation notes.</p>
-        </article>
-        <article class="card">
-          <div class="meta">Course project</div>
-          <h3>Course Game Classification</h3>
-          <p>Supporting evidence for ML / NLP foundations, kept below the fold rather than at the center of the page.</p>
-        </article>
-        <article class="card">
-          <div class="meta">Course project</div>
-          <h3>Course DS340 House Price</h3>
-          <p>A standard course-style repository preserved with consistent naming and documentation.</p>
-        </article>
+      <div class="grid-3">
+        <a class="card repo-link" href="https://github.com/GuangzeLiu/research-la-crime-prediction" target="_blank" rel="noreferrer">
+          <div class="meta">Research-oriented repo</div>
+          <h3>research-la-crime-prediction</h3>
+          <p>Urban spatial pattern modeling in ML and prediction with engineered features from 2M+ LAPD records.</p>
+        </a>
+        <a class="card repo-link" href="https://github.com/GuangzeLiu/project-gravityleap" target="_blank" rel="noreferrer">
+          <div class="meta">Project repo</div>
+          <h3>project-gravityleap</h3>
+          <p>A 2D platformer prototype with scene and camera rotation using Unity.</p>
+        </a>
+        <a class="card repo-link" href="https://github.com/GuangzeLiu/course-chatdb-dsci551" target="_blank" rel="noreferrer">
+          <div class="meta">Course repo</div>
+          <h3>course-chatdb-dsci551</h3>
+          <p>Data systems coursework project in MySQL and MongoDB.</p>
+        </a>
       </div>
     </section>
 
     <section class="section" id="contact">
       <div class="section-head">
-        <div>
-          <h2>Contact</h2>
-          <div class="section-sub">Replace placeholder links or add your email, CV, Google Scholar, or LinkedIn when ready.</div>
-        </div>
+        <h2>Contact</h2>
       </div>
-      <div class="grid-3">
-        <a class="card" href="https://github.com/GuangzeLiu" target="_blank" rel="noreferrer">
+      <div class="contact-strip">
+        <div>
           <div class="meta">GitHub</div>
-          <h3>Repository portfolio</h3>
-          <p>Use this as the main entry point for code, projects, and documentation.</p>
-        </a>
-        <div class="card">
-          <div class="meta">Email</div>
-          <h3>your-email@example.com</h3>
-          <p>Replace this with your academic or preferred contact email.</p>
+          <div><a href="https://github.com/GuangzeLiu" target="_blank" rel="noreferrer">github.com/GuangzeLiu</a></div>
         </div>
-        <div class="card">
-          <div class="meta">CV / Scholar</div>
-          <h3>Add when ready</h3>
-          <p>Useful additions once you want the page to function as a formal academic landing page.</p>
+        <div>
+          <div class="meta">Email</div>
+          <div>guangze001@e.ntu.edu.sg</div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer container">
-    <div>© Guangze Liu · Research portfolio / personal page</div>
+    <div>©Liu Guangze </div>
   </footer>
 </body>
 </html>
